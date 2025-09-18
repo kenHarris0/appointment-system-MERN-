@@ -1,18 +1,20 @@
 import React from 'react'
 import './Navbar.css'
 import applogo from '../../assets/logo.svg'
-const Navbar = () => {
+import { useNavigate } from 'react-router-dom'
+const Navbar = ({setshowLoginPage,showLoginPage}) => {
+  const navigator=useNavigate()
   return (
     <div className='nav'>
         <img src={applogo} alt="" />
         <div className="inside-nav">
             <p>Home</p>
-            <p>All Doctors</p>
+            <p onClick={()=>navigator('/alldoctors')}>All Doctors</p>
             <p>My Appointments</p>
             <p>Contact Us</p>
         </div>
 
-        <button>Login</button>
+        <button onClick={()=>setshowLoginPage(true)}>Login</button>
 
       
     </div>
