@@ -46,15 +46,35 @@ const getuserdata=async()=>{
 
 }
 
+// GETTING ALL DOCTORS FROM BACKEND 
+const [doctors,setdoctors]=useState([])
+const getallDoctors=async()=>{
+  try{
+    const response=await axios.get(url+"/doc/listalldoc")
+    if(response.data.success){
+      setdoctors(response.data.payload)
+    }
+
+  }
+  catch(error){
+    console.log(error)
+  }
+
+}
+
 
 
 useEffect(()=>{
   isuserAuth()
+  getallDoctors()
+  
 },[])
 
   const value = {
     //userdata context
-    userdata,setuserdata,url,isuserAuth,getuserdata,isloggedin ,setisloggedin
+    userdata,setuserdata,url,isuserAuth,getuserdata,isloggedin ,setisloggedin,
+    //doctors
+    getallDoctors,doctors,setdoctors
    
   }
 

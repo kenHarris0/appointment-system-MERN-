@@ -1,0 +1,33 @@
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 20%;
+    
+    min-height: 100vh; 
+    border-right: 1px solid #ccc; 
+    padding: 20px 10px;
+    
+}
+
+
+.side1{
+    display: flex;
+    width: 70%;
+    height: 40px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid black;
+    padding: 10px;
+    cursor: pointer;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.side1 img{
+    width: 33px;
+    height: 33px;
+}

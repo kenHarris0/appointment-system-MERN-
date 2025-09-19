@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import './Login.css'
 import axios from 'axios'
 import { AppointmentContext } from '../../contexts/context'
+import { toast } from 'react-toastify'
 const Login = ({setshowLoginPage}) => {
 
 const [userip,setuserip]=useState({
@@ -24,7 +25,8 @@ const handlesubmit=async(e)=>{
     if(response.data.success){
       await isuserAuth()
       setisloggedin(true)
-
+setshowLoginPage(false)
+toast.success("account created successfully")
     }
     else{
       setisloggedin(false)
@@ -35,6 +37,8 @@ const handlesubmit=async(e)=>{
     if(response.data.success){
       await isuserAuth()
       setisloggedin(true)
+      setshowLoginPage(false)
+      toast.success("logged in successfully")
 
     }
     else{

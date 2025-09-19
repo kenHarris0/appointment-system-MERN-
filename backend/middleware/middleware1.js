@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const isAuth = async (req, res, next) => {
   const token = req.cookies.token; 
+  console.log("Cookies from client:", req.cookies);
   if (!token) {
     return res.json({ success: false, message: "No token, not authorized" });
   }

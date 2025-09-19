@@ -3,6 +3,7 @@ const cors=require("cors")
 const dotenv=require("dotenv")
 const connection=require("./config/db")
 const userRouter=require("./routes/userRoutes")
+const docrouter=require('./routes/doctorroutes')
 const cookieParser=require("cookie-parser")
 const app=express()
 
@@ -15,6 +16,8 @@ app.use(cookieParser())
 
 //routes
 app.use('/user',userRouter)
+app.use('/doc',docrouter)
+app.use('/doctorimage',express.static("Doctors"))
 
 
 

@@ -1,0 +1,48 @@
+.list-doc{
+    width: 80%;
+    min-height: 100vh;
+    border: 1px solid black;
+}
+.listcont{
+    width: 100%;
+    padding: 20px;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+
+.doc-indi{
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+     border: 1px solid black;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: rgb(85, 85, 218,0.4);
+    color: rgb(0, 0, 0);
+    position: relative;
+}
+
+.doc-indi img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.doc-indi p{
+    font-size: 20px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+}
+
+.close{
+    position: absolute;
+    top: 5px;
+    right:5px;
+    font-size: 20px;
+    cursor: pointer;
+}

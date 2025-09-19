@@ -23,7 +23,7 @@ const register = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: false, 
-      sameSite: "lax",
+      sameSite: "strict",
       maxAge: 24 * 60 * 60 * 1000,
     });
 
@@ -56,7 +56,7 @@ const login = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: false, 
-      sameSite: "lax",
+      sameSite: "strict",
       maxAge: 24 * 60 * 60 * 1000,
     });
 
@@ -72,7 +72,7 @@ const logout = async (req, res) => {
     res.clearCookie("token", {
       httpOnly: true,
       secure: false, 
-      sameSite: "lax",
+      sameSite: "strict",
     });
 
     res.json({ success: true, message: "Logged out" });

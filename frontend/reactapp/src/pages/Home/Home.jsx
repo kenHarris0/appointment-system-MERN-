@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Home.css'
 import {assets} from '../../assets/assets'
-import { doctors } from '../../assets/assets'
+
+import { AppointmentContext } from '../../contexts/context'
+import { useNavigate } from 'react-router-dom'
 const Home = () => {
 
 const[filter,setfilter]=useState("all")
+const {doctors}=useContext(AppointmentContext)
 
-
+const navigator=useNavigate()
 
 
 
@@ -49,9 +52,9 @@ const[filter,setfilter]=useState("all")
   <div className="doctor-home">
     {doctors.filter(item=>filter==="all" || item.speciality===filter).map((doc,ind)=>{
      return(
-        <div className="doc-indi" key={ind}>
+        <div className="doc-indi" key={ind} onClick={()=>navigator(`/doctorpage/${doc._id}`)}>
           <div className="doc-img">
-<img src={doc.image} alt="" />
+<img src={`http://localhost:5000/doctorimage/${doc.image}`} alt="" />
           </div>
           <div className="docdesc">
 <div className='gg'><div className="avail"></div> <p>available</p></div>

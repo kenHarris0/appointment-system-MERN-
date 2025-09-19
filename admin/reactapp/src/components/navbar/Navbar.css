@@ -1,0 +1,21 @@
+.navbar{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+width: 80%;
+height: 50px;
+margin: 0 auto;
+    align-items: center;
+}
+.navbar button{
+    width: 150px;
+    height: 30px;
+    background-color: rgb(73, 73, 193);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.navbar img{
+    height: 40px;
+}

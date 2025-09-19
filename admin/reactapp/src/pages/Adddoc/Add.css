@@ -1,0 +1,45 @@
+.add-doc{
+    width: 80%;
+    min-height: 100vh;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+
+}
+.add-doc h1{
+    font-size: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 50px;
+}
+
+.add-doc form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 450px;
+    height: 600px;
+    border: 1px solid beige;
+    padding: 20px;
+}
+
+.add-doc form input{
+    width: 80%;
+    height: 40px;
+}
+.add-doc form button{
+    width: 150px;
+    height: 40px;
+    background-color: rgb(99, 99, 188);
+    cursor: pointer;
+    border-radius: 22px;
+}
+
+.add-doc form input::placeholder{
+    padding: 5px;
+    font-size: 14px;
+}
