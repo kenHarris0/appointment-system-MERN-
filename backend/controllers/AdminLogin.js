@@ -1,14 +1,11 @@
-const User = require("../model/User");
+const User = require("../model/Adminpglogin");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const transporter=require("../config/nodemailer")
-const registermail=require("../config/Mailtemplates")
-
 
 const register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { type,name, email, password } = req.body;
   try {
-    if (!name || !email || !password) {
+    if (!type || !name || !email || !password) {
       return res.json({ success: false, message: "All fields required" });
     }
 
@@ -18,10 +15,10 @@ const register = async (req, res) => {
     }
 
     const hashedpswd = await bcrypt.hash(password, 10);
-    const newUser = new User({ name, email, password: hashedpswd });
+    const newUser = new User({ type,name, email, password: hashedpswd });
     await newUser.save();
 
-    const token = jwt.sign({ id: newUser._id }, process.env.SECRET_KEY, { expiresIn: "5h" });
+    const token = jwt.sign({ id: newUser._id,type: newUser.type }, process.env.SECRET_KEY, { expiresIn: "5h" });
 
     res.cookie("token", token, {
       httpOnly: true,
@@ -29,14 +26,6 @@ const register = async (req, res) => {
       sameSite: "strict",
       maxAge: 24 * 60 * 60 * 1000,
     });
-    const mailContent={
-      from:process.env.SMTP_MAIL,
-      to:newUser.email,
-      subject:"Account Created Successfully",
-      html:registermail.replace("{{username}}",newUser.name).replace("{{email}}",newUser.email)
-    }
-
-    await transporter.sendMail(mailContent)
 
     res.json({ success: true });
   } catch (error) {
@@ -62,7 +51,7 @@ const login = async (req, res) => {
       return res.json({ success: false, message: "Wrong password" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, { expiresIn: "5h" });
+    const token = jwt.sign({ id: user._id,type: user.type }, process.env.SECRET_KEY, { expiresIn: "5h" });
 
     res.cookie("token", token, {
       httpOnly: true,
@@ -102,6 +91,7 @@ const isuserAuth=async(req,res)=>{
     }
 }
 
+
 const getalluserData=async(req,res)=>{
   const userId=req.userId
   try{
@@ -109,22 +99,13 @@ const getalluserData=async(req,res)=>{
     if(!user){
       return res.json({success:false,message:"falied to fetch user data"})
     }
-    res.json({success:true,payload:{email:user.email,name:user.name,_id:user._id}})
+    res.json({success:true,payload:{type:user.type,email:user.email,name:user.name}})
   }
   catch(error){
     console.log(error)
   }
 }
 
-const getallusers=async(req,res)=>{
-  try{
-    const users=await User.find()
-    res.json({success:true,payload:users})
-  }
-   catch(error){
-    console.log(error)
-  }
 
 
-}
-module.exports = { register, login, logout, isuserAuth,getalluserData,getallusers };
+module.exports = { register, login, logout, isuserAuth,getalluserData };

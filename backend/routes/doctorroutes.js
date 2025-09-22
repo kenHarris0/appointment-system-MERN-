@@ -1,6 +1,6 @@
 const express=require("express")
 const multer=require("multer")
-const {addDoctor,getalldocs,removedoc,searchbyid}=require("../controllers/doccontroller")
+const {addDoctor,getalldocs,removedoc,searchbyid,searchbyemail}=require("../controllers/doccontroller")
 const { route } = require("./userRoutes")
 const router=express.Router()
 
@@ -22,5 +22,7 @@ router.get('/listalldoc',getalldocs)
 router.post('/deldoc',removedoc)
 
 router.post('/searchbyid',searchbyid)
+
+router.post('/searchbyemail',searchbyemail)
 
 module.exports=router

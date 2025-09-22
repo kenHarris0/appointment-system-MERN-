@@ -35,7 +35,7 @@ const logout=async()=>{
         <div className="inside-nav">
             <p onClick={()=>navigator('/')}>Home</p>
             <p onClick={()=>navigator('/alldoctors')}>All Doctors</p>
-            <p>My Appointments</p>
+            <p onClick={()=>navigator('/yourappointments')}>My Appointments</p>
             <p>Contact Us</p>
         </div>
 

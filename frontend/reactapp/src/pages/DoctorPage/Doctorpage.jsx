@@ -3,12 +3,13 @@ import './Doctorpage.css'
 import { useParams } from 'react-router-dom'
 import { AppointmentContext } from '../../contexts/context'
 import axios from 'axios'
+import {toast} from 'react-toastify'
 import { assets } from '../../assets/assets'
 
 const Doctorpage = () => {
-const[docdata,setdocdata]=useState({})
+const[docdata,setdocdata,getuserdata]=useState({})
 const { id }=useParams()
-const {url}=useContext(AppointmentContext)
+const {url,userdata}=useContext(AppointmentContext)
 
 const findDoctorInfo=async(id)=>{
     try{
@@ -36,14 +37,40 @@ const getdates=(count)=>{
     return days
 
 }
+// appointment booking from doc tab functionality
+
+const[pickdate,setpickdate]=useState("")
+const[pickday,setpickday]=useState("")
+const[picktime,setpicktime]=useState("")
+   
+const bookAppointment=async(docId)=>{
+
+    try{
+        const response=await axios.post(url+'/appointment/add',{docId,time:{day:pickday,date:pickdate,timing:picktime},email:userdata.email},{withCredentials:true})
+if(response.data.success){
+    toast.success(`appointment booked ${userdata.name}`)
+    setpickdate("")
+    setpickday("")
+    setpicktime("")
+}
+    }
+    catch(error){
+        console.log(error)
+    }
+
+}
 
 
 
+console.log(pickdate)
+console.log(pickday)
+console.log(picktime)
 useEffect(() => {
   if (id) {
     findDoctorInfo(id);
   }
 }, [id]);
+
 
 const days=getdates(7)
   return (
@@ -88,7 +115,7 @@ const days=getdates(7)
                     <div className="bot2">
                        
                         {days.map((d, idx) => (
-              <div className="weekdiv" key={idx}>
+              <div className={`weekdiv ${(pickdate===d.date.toString() && pickday===d.day.toString())? 'acti':'' }`} key={idx} onClick={()=>{setpickdate(d.date.toString());setpickday(d.day.toString())}}>
                 <p>{d.day}</p>
                 <p>{d.date}</p>
               </div>
@@ -98,34 +125,34 @@ const days=getdates(7)
 
                     </div>
                     <div className="bot3">
-                        <div className="time1">
+                        <div className={`time1 ${picktime==="10.00 AM"?'acti':''}`} onClick={()=>setpicktime("10.00 AM")}>
                             <p>10.00 AM</p>
                         </div>
-                         <div className="time1">
+                         <div className={`time1 ${picktime==="11.00 AM"?'acti':''}`} onClick={()=>setpicktime("11.00 AM")}>
                             <p>11.00 AM</p>
                         </div>
-                         <div className="time1">
+                         <div className={`time1 ${picktime==="12.00 AM"?'acti':''}`} onClick={()=>setpicktime("12.00 AM")}>
                             <p>12.00 AM</p>
                         </div>
-                         <div className="time1">
+                         <div className={`time1 ${picktime==="01.00 PM"?'acti':''}`} onClick={()=>setpicktime("01.00 PM")}>
                             <p>01.00 PM</p>
                         </div>
-                         <div className="time1">
+                         <div className={`time1 ${picktime==="02.00 PM"?'acti':''}`} onClick={()=>setpicktime("02.00 PM")}>
                             <p>02.00 PM</p>
                         </div>
-                         <div className="time1">
+                         <div className={`time1 ${picktime==="03.00 PM"?'acti':''}`} onClick={()=>setpicktime("03.00 PM")}>
                             <p>03.00 PM</p>
                         </div>
-                         <div className="time1">
+                         <div className={`time1 ${picktime==="05.00 PM"?'acti':''}`} onClick={()=>setpicktime("05.00 PM")}>
                             <p>05.00 PM</p>
                         </div>
-                         <div className="time1">
+                         <div className={`time1 ${picktime==="06.00 PM"?'acti':''}`} onClick={()=>setpicktime("06.00 PM")}>
                             <p>06.00 PM</p>
                         </div>
                         
                     </div>
                     <div className="bot4">
-                        <button>Book Appointment</button>
+                        <button onClick={()=>bookAppointment(id)}>Book Appointment</button>
                     </div>
 
                  </div>

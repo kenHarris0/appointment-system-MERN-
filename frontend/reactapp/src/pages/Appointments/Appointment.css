@@ -1,0 +1,105 @@
+.appointment{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.appoint-heading{
+    font-size: 25px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.appoint-list{
+    width: 50%;
+    min-height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.appoint-indi{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 10px;
+    height: auto;
+    
+}
+
+.appoint-indi h1{
+    font-size: 32px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.appoint-indi p{
+    font-size: 22px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 700;
+}
+
+.timing{
+    padding-left: 120px;
+}
+
+.statuss{
+    padding-left: 30px;
+}
+.payment{
+    padding-left: 30px;
+}
+
+.valll{
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace;
+    padding-left: 10px;
+    font-weight: 700;
+}
+.innercont{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.pinger{
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.green{
+    background-color: green;
+}
+.red{
+    background-color: red;
+}
+.paycont{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+}
+
+.paycont button{
+    width: 70px;
+    height: 30px;
+    border: none;
+    background-color: rgb(87, 187, 87);
+    cursor: pointer;
+   border-radius: 4px;
+}

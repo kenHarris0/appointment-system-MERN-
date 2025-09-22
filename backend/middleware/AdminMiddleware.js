@@ -1,0 +1,27 @@
+
+const jwt = require("jsonwebtoken");
+
+
+const isAuth = async (req, res, next) => {
+  const token = req.cookies.token; 
+  console.log("Cookies from client:", req.cookies);
+  if (!token) {
+    return res.json({ success: false, message: "No token, not authorized" });
+  }
+
+  try {
+    const verify = jwt.verify(token, process.env.SECRET_KEY);
+    if (verify.id && verify.type) {
+      req.userId = verify.id;
+      req.type=verify.type
+      next();
+    } else {
+      return res.json({ success: false, message: "Invalid token" });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.json({ success: false, message: "Token verification failed" });
+  }
+};
+
+module.exports=isAuth

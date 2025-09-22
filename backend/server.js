@@ -5,6 +5,8 @@ const connection=require("./config/db")
 const userRouter=require("./routes/userRoutes")
 const docrouter=require('./routes/doctorroutes')
 const cookieParser=require("cookie-parser")
+const Appointrouter=require("./routes/Appointmentroutes")
+const Adminrouter=require("./routes/AdminLogin")
 const app=express()
 
 const frontendorigin="http://localhost:5173"
@@ -18,7 +20,8 @@ app.use(cookieParser())
 app.use('/user',userRouter)
 app.use('/doc',docrouter)
 app.use('/doctorimage',express.static("Doctors"))
-
+app.use('/appointment',Appointrouter)
+app.use('/admin',Adminrouter)
 
 
 app.listen(5000,()=>{

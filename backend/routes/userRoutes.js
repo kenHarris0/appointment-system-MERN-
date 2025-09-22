@@ -1,5 +1,5 @@
 const express=require("express")
-const {login,register,logout,isuserAuth,getalluserData}=require("../controllers/usercontroller")
+const {login,register,logout,isuserAuth,getalluserData,getallusers}=require("../controllers/usercontroller")
 const isAuth=require("../middleware/middleware1")
 
 const router=express.Router()
@@ -11,7 +11,7 @@ router.post('/logout',logout)
 router.post('/isuserauth',isAuth,isuserAuth)
 router.get('/getalluser',isAuth,getalluserData)
 
-
+router.get('/getusersfromdb',getallusers)
 
 module.exports=router
 

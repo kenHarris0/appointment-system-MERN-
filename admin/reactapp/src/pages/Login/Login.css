@@ -1,0 +1,79 @@
+.login-pg{
+    width: 80%;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   background: rgba(0, 0, 0, 0.8);
+   position: fixed;
+   z-index: 1000;
+}
+.cross{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+}
+.cross:hover{
+    color: red;
+}
+.logincont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: center;
+  gap: 10px;
+  color: white;
+
+  background: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+
+  width: 400px;
+  height: auto;
+  border-radius: 12px;
+  padding: 20px;
+   margin-top: -400px;
+}
+
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 200px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   
+}
+.login-form input{
+    width: 80%;
+    height: 29px;
+}
+
+.login-form input::placeholder{
+    color: rgb(0, 0, 0);
+    padding: 4px;
+}
+
+.login-form button{
+    width: 150px;
+    height: 37px;
+    cursor: pointer;
+    background-color: rgb(75, 75, 215);
+    color: rgb(255, 255, 255);
+    border-radius: 30px;
+    margin-top: 10px;
+    font-size: 22px;
+}
+
+.login-form button:hover{
+    transform: translate(0px,2px);
+    background-color: rgb(32, 32, 108);
+    color: white;
+}

@@ -9,6 +9,8 @@ import { useState } from 'react'
 import Login from './pages/Login/Login'
 import {ToastContainer} from 'react-toastify'
 import Doctorpage from './pages/DoctorPage/Doctorpage'
+import Appointment from './pages/Appointments/Appointment'
+import Payment from './pages/Paymentroute/Payment'
 const App = () => {
   const[showLoginPage,setshowLoginPage]=useState(false)
   return (
@@ -20,7 +22,9 @@ const App = () => {
             <Route path='/' element={<Home/>}/>
             <Route path='/alldoctors' element={<Doc/>}/>
             <Route path='/doctorpage/:id' element={<Doctorpage/>}/>
-
+            <Route path='/yourappointments' element={<Appointment/>}/>
+            <Route path='/cart-checkout' element={<Payment/>}/>
+        
       </Routes>
       <Footer/>
     </div>

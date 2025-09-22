@@ -4,13 +4,15 @@ const mongoose=require("mongoose")
 
 const schema=new mongoose.Schema({
     name:{type:String},
+    
     image:{type:String},
     speciality:{type:String},
     degree:{type:String},
     experience:{type:String},
     about:{type:String},
     fees:{type:String},
-    addess:{type:String}
+    address:{type:String},
+    email:{type:String}
 
 })
 

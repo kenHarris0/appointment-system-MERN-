@@ -61,12 +61,34 @@ const getallDoctors=async()=>{
   }
 
 }
+//fetch all appointments  from backend
+
+const[userAppointments,setuserAppointments]=useState([])
+
+const fetchAppointments=async()=>{
+  try{
+    const response=await axios.get(url+"/appointment/get")
+    if(response.data.success){
+      setuserAppointments(response.data.payload)
+      
+    }
+
+  }
+  catch(error){
+    console.log(error)
+  }
+}
+
+
+
+
 
 
 
 useEffect(()=>{
   isuserAuth()
   getallDoctors()
+  fetchAppointments()
   
 },[])
 
@@ -74,7 +96,11 @@ useEffect(()=>{
     //userdata context
     userdata,setuserdata,url,isuserAuth,getuserdata,isloggedin ,setisloggedin,
     //doctors
-    getallDoctors,doctors,setdoctors
+    getallDoctors,doctors,setdoctors,
+    //user appointmetns data
+    userAppointments,setuserAppointments,fetchAppointments,
+    //curr appointemtns of user
+   
    
   }
 

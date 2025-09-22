@@ -63,7 +63,7 @@ const navigator=useNavigate()
       <div className="right-part">
          {doctors.filter(item=>filter==="all" || item.speciality===filter).map((doc,ind)=>{
              return(
-                <div className="doc-indi" key={ind} onClick={()=>navigator('/doctorpage')}>
+                <div className="doc-indi" key={ind} onClick={()=>navigator(`/doctorpage/${doc._id}`)}>
                   <div className="doc-img">
         <img src={`http://localhost:5000/doctorimage/${doc.image}`} alt="" />
                   </div>

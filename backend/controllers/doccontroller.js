@@ -62,4 +62,20 @@ const searchbyid=async(req,res)=>{
 
 }
 
-module.exports={addDoctor,getalldocs,removedoc,searchbyid}
+const searchbyemail=async(req,res)=>{
+    const email=req.body.email
+
+    try{
+        const doctor=await Doctor.findOne({email})
+        if(!doctor){
+            return res.json({success:false})
+        }
+        res.json({success:true,payload:doctor})
+    }
+    catch(error){
+    console.log(error)
+}
+
+}
+
+module.exports={addDoctor,getalldocs,removedoc,searchbyid,searchbyemail}

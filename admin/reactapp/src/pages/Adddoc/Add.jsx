@@ -8,6 +8,7 @@ const Add = () => {
 const [formdata,setformdata]=useState({
   name:"",
   image:"",
+  email:"",
 speciality:"",
   degree:"",
   experience:"",
@@ -28,6 +29,7 @@ try{
     setformdata({
        name:"",
   image:"",
+  email:"",
 speciality:"",
   degree:"",
   experience:"",
@@ -68,6 +70,7 @@ const handlechange=(e)=>{
         </div>
         
         <input type="text" name="name" placeholder='name' value={formdata.name} onChange={handlechange} required/>
+        <input type="email" placeholder='Email' value={formdata.email} onChange={handlechange} name='email' />
         <input type="text" name="speciality" placeholder="Speciality" value={formdata.speciality} onChange={handlechange} required/>
         <input type="text" name="degree" placeholder="Degree" value={formdata.degree} onChange={handlechange} required/>
         <input type="text" name="experience" placeholder="Experience" value={formdata.experience} onChange={handlechange} required/>

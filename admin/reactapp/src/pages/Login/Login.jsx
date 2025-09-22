@@ -1,17 +1,19 @@
 import React, { useContext, useState } from 'react'
 import './Login.css'
 import axios from 'axios'
-import { AppointmentContext } from '../../contexts/context'
-import { toast } from 'react-toastify'
-const Login = ({setshowLoginPage}) => {
 
+import { toast } from 'react-toastify'
+import { AdminContext } from '../../Contexts/admincontext'
+const Login = ({setshowLoginPage}) => {
+const {url,isadminAuth,getadmindata,setisloggedin,isloggedin}=useContext(AdminContext)
 const [userip,setuserip]=useState({
+  type:"",
   name:"",
   email:"",
   password:""
 })
 const [currstate,setcurrstate]=useState("signup")
-const {userdata,setuserdata,url,isuserAuth,getuserdata,isloggedin ,setisloggedin}=useContext(AppointmentContext)
+
 
 
 const handlechange=(e)=>{
@@ -21,30 +23,29 @@ const handlechange=(e)=>{
 const handlesubmit=async(e)=>{
   e.preventDefault();
   if(currstate==="signup"){
-    const response=await axios.post(url+"/user/register",userip,{withCredentials:true})
+    const response=await axios.post(url+"/admin/register",userip,{withCredentials:true})
     if(response.data.success){
-     
-     
-      await isuserAuth()
-  toast.success("Account created successfully")
-  setshowLoginPage(false)
-
+      await isadminAuth()
+      setisloggedin(true)
+setshowLoginPage(false)
+      
+toast.success("account created successfully")
     }
     else{
-      setisloggedin(false)
+       setisloggedin(false)
     }
   }
   else{
-    const response=await axios.post(url+"/user/login",{email:userip.email,password:userip.password},{withCredentials:true})
+    const response=await axios.post(url+"/admin/login",{type:userip.type,email:userip.email,password:userip.password},{withCredentials:true})
     if(response.data.success){
-      
-      await isuserAuth()
-  toast.success("logged in successfully")
-  setshowLoginPage(false)
+      await isadminAuth()
+      setisloggedin(true)
+      setshowLoginPage(false)
+      toast.success("logged in successfully")
 
     }
     else{
-      setisloggedin(false)
+       setisloggedin(false)
     }
   }
 }
@@ -58,6 +59,7 @@ const handlesubmit=async(e)=>{
         <h1>{currstate==="signup"?"Sign Up":"Login"} to Prescripto</h1>
         <p className='cross' onClick={()=>setshowLoginPage(false)}>X</p>
         <form className='login-form' onSubmit={handlesubmit}>
+          <input type="text" name="type" value={userip.type} placeholder='Type' onChange={handlechange} required />
           {currstate==="signup" && <input type='text' placeholder='Name' name='name' value={userip.name} onChange={handlechange}/>}
           <input type='email' placeholder='Email' name='email' value={userip.email} onChange={handlechange}/>
           <input type='password' placeholder='Password' name='password' value={userip.password} onChange={handlechange}/>

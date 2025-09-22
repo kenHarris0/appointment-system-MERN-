@@ -113,6 +113,11 @@
     margin-top: 40px;
 }
 
+.acti{
+    transform: translate(0px,-13px);
+    background-color: rgb(105, 77, 25);
+}
+
 .weekdiv{
     width: 70px;
     height: 100px;
