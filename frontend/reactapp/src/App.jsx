@@ -11,6 +11,8 @@ import {ToastContainer} from 'react-toastify'
 import Doctorpage from './pages/DoctorPage/Doctorpage'
 import Appointment from './pages/Appointments/Appointment'
 import Payment from './pages/Paymentroute/Payment'
+import Profile from './pages/Profile/Profile'
+import Contact from './pages/Contact/Contact'
 const App = () => {
   const[showLoginPage,setshowLoginPage]=useState(false)
   return (
@@ -24,6 +26,8 @@ const App = () => {
             <Route path='/doctorpage/:id' element={<Doctorpage/>}/>
             <Route path='/yourappointments' element={<Appointment/>}/>
             <Route path='/cart-checkout' element={<Payment/>}/>
+            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/contact' element={<Contact/>}/>
         
       </Routes>
       <Footer/>

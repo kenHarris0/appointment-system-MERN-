@@ -24,7 +24,7 @@ try{
       from:process.env.SMTP_MAIL,
       to:email,
       subject:"Appopintment booked successfully",
-      html:aptmail.replace("{{appointmentDate}}",newappointment.time.date).replace("{{appointmentTime}}",newappointment.time.timing).replace("{{paymentStatus}}",newappointment.status.paid)
+      html:aptmail.replace("{{appointmentDate}}",newappointment.time.date).replace("{{appointmentTime}}",newappointment.time.timing)
     }
 
     await transporter.sendMail(mailContent)

@@ -1,5 +1,5 @@
 const Doctor=require("../model/doctor")
-
+const fs=require("fs")
 
 const addDoctor=async(req,res)=>{
 const image=req.file?req.file.filename:null;
@@ -37,6 +37,14 @@ try{
     const doc=await Doctor.findByIdAndDelete(id)
     if(!doc){
         return res.json({success:false,messgae:"unable to find a doctor"})
+    }
+    if(doc.image){
+        const filepath=`./Doctors/${doc.image}`
+         fs.unlink(filepath, (err) => {
+        if (err) {
+          console.log("Failed to delete image:", err);
+        }
+      });
     }
     res.json({success:true,message:"doc deleted"})
 }

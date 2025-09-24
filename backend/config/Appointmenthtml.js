@@ -77,7 +77,7 @@ const aptmail=`
        
         <p><strong>Date:</strong> {{appointmentDate}}</p>
         <p><strong>Time:</strong> {{appointmentTime}}</p>
-        <p><strong>Payment Status:</strong> {{paymentStatus}}</p>
+       
       </div>
 
       <p>Please arrive 10 minutes before your scheduled time.</p>

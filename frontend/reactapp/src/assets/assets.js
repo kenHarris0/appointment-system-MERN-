@@ -36,6 +36,7 @@ import General_physician from './General_physician.svg'
 import Gynecologist from './Gynecologist.svg'
 import Neurologist from './Neurologist.svg'
 import Pediatricians from './Pediatricians.svg'
+import uplaod_area from './upload_area.png'
 
 
 export const assets = {
@@ -52,6 +53,7 @@ export const assets = {
     about_image,
     menu_icon,
     cross_icon,
+    uplaod_area,
     dropdown_icon,
     upload_icon,
     stripe_logo,

@@ -3,10 +3,12 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const transporter=require("../config/nodemailer")
 const registermail=require("../config/Mailtemplates")
-
+const fs = require("fs")
+const path = require("path")
 
 const register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password,bloodgroup,age,allergys,address,phone,emergencyContact,medicalHistory } = req.body;
+  const image=req.file?req.file.filename:null
   try {
     if (!name || !email || !password) {
       return res.json({ success: false, message: "All fields required" });
@@ -18,7 +20,7 @@ const register = async (req, res) => {
     }
 
     const hashedpswd = await bcrypt.hash(password, 10);
-    const newUser = new User({ name, email, password: hashedpswd });
+    const newUser = new User({ name, email, password: hashedpswd,bloodgroup,age,allergys,address,phone,emergencyContact,medicalHistory,image });
     await newUser.save();
 
     const token = jwt.sign({ id: newUser._id }, process.env.SECRET_KEY, { expiresIn: "5h" });
@@ -107,9 +109,9 @@ const getalluserData=async(req,res)=>{
   try{
     const user=await User.findById(userId)
     if(!user){
-      return res.json({success:false,message:"falied to fetch user data"})
+      return res.json({success:false,message:"failed to fetch user data"})
     }
-    res.json({success:true,payload:{email:user.email,name:user.name,_id:user._id}})
+    res.json({success:true,payload:user})
   }
   catch(error){
     console.log(error)
@@ -127,4 +129,32 @@ const getallusers=async(req,res)=>{
 
 
 }
-module.exports = { register, login, logout, isuserAuth,getalluserData,getallusers };
+
+
+
+
+
+const updateProfileImage = async (req, res) => {
+  const id = req.userId;
+  const newImg = req.file ? req.file.filename : null;
+
+  try {
+    const user = await User.findByIdAndUpdate(id,{ image: newImg }, { new: true });
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+   
+
+   
+    
+
+    res.json({ success: true, payload: user });
+  } catch (error) {
+    console.error("Update profile image error:", error.message);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+
+module.exports = { register, login, logout, isuserAuth,getalluserData,getallusers,updateProfileImage };

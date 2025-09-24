@@ -36,14 +36,14 @@ const logout=async()=>{
             <p onClick={()=>navigator('/')}>Home</p>
             <p onClick={()=>navigator('/alldoctors')}>All Doctors</p>
             <p onClick={()=>navigator('/yourappointments')}>My Appointments</p>
-            <p>Contact Us</p>
+            <p  onClick={()=>navigator('/contact')}>Contact Us</p>
         </div>
 
         {!isloggedin?<button onClick={()=>setshowLoginPage(true)}>Login</button>:
         <div className='prof-nav'>
-          <p onClick={()=>setclicklogo(!clicklogo)}>{userdata?.name?userdata.name[0].toUpperCase():"X"}</p>
+          <p onClick={()=>setclicklogo(!clicklogo)}>{userdata?.image?<img src={`http://localhost:5000/userimage/${userdata.image}`} alt=''/>:"X"}</p>
           {clicklogo && <div className="dropdowns">
-            <p>My Profile</p>
+            <p onClick={()=>navigator('/profile')}>My Profile</p>
             <p onClick={()=>logout()}>Logout</p>
 
           </div>}

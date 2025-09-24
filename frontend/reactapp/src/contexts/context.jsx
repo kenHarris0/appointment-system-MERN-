@@ -36,8 +36,7 @@ const getuserdata=async()=>{
     }
     else{
       setuserdata({
-         name:"",
-    email:"",
+        
       })
     }
   }catch(error){
