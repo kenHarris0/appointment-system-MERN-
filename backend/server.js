@@ -1,6 +1,7 @@
 const express=require("express")
 const cors=require("cors")
 const dotenv=require("dotenv")
+const Limiter=require('express-rate-limit')
 const connection=require("./config/db")
 const userRouter=require("./routes/userRoutes")
 const docrouter=require('./routes/doctorroutes')
@@ -17,6 +18,16 @@ app.use(express.json())
 app.use(cookieParser())
 
 
+ //rate limiting entire webreq
+const GlobalLimiter=Limiter({
+    windowMs:10*60*1000,
+    max:120,
+    message:"You ha e reached the maximum number of api calls,please try again after 10 minutes",
+    standardHeaders:true,
+    legacyHeaders: false
+
+})
+app.use(GlobalLimiter)
 //routes
 app.use('/user',userRouter)
 app.use('/doc',docrouter)

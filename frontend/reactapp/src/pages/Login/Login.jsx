@@ -46,6 +46,7 @@ const handlesubmit=async(e)=>{
 
     }
     else{
+      toast.error("failed to create account")
       setisloggedin(false)
     }
   }
@@ -59,6 +60,7 @@ const handlesubmit=async(e)=>{
 
     }
     else{
+       toast.error("failed to login")
       setisloggedin(false)
     }
   }

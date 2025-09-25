@@ -6,6 +6,7 @@ const registermail=require("../config/Mailtemplates")
 const fs = require("fs")
 const path = require("path")
 
+
 const register = async (req, res) => {
   const { name, email, password,bloodgroup,age,allergys,address,phone,emergencyContact,medicalHistory } = req.body;
   const image=req.file?req.file.filename:null
