@@ -9,8 +9,17 @@ const cookieParser=require("cookie-parser")
 const Appointrouter=require("./routes/Appointmentroutes")
 const Adminrouter=require("./routes/AdminLogin")
 const queryrouter=require("./routes/queryroutes")
-const app=express()
+const fs = require("fs");
+const path = require("path");
+const morgan = require("morgan");
 
+
+const app=express()
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, "access.log"), 
+  { flags: "a" }
+);
+app.use(morgan("combined", { stream: accessLogStream }));
 const frontendorigin="http://localhost:5173"
 dotenv.config()
 app.use(cors({origin:frontendorigin,credentials:true}))
@@ -22,7 +31,7 @@ app.use(cookieParser())
 const GlobalLimiter=Limiter({
     windowMs:10*60*1000,
     max:120,
-    message:"You ha e reached the maximum number of api calls,please try again after 10 minutes",
+    message:"You have reached the maximum number of api calls,please try again after 10 minutes",
     standardHeaders:true,
     legacyHeaders: false
 
