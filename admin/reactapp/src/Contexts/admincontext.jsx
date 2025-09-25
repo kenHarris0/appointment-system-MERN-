@@ -18,6 +18,7 @@ const isadminAuth=async()=>{
         await getcurrdoc()
         await fetchAppointments()
         await fetchpatients()
+        await getallqueries()
 
       }
     }
@@ -124,7 +125,22 @@ const getcurrapts = () => {
   setcurrapointments(currapt);
 };
 
-    
+    //query based select all from db 
+ const [allissues,setallissues]=useState([])
+     const getallqueries=async()=>{
+        try{
+            const response=await axios.get(url+'/query/getall',{withCredentials:true})
+            if(response.data.success){
+                setallissues(response.data.payload)
+            }
+            else{
+                setallissues([])
+            }
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
 
 
 useEffect(()=>{
@@ -150,7 +166,10 @@ fetchpatients,patients,setpatients,
 getcurrdoc,currdoc,setcurrdoc,
 
 // curr doc appointments 
-currapts,setcurrapointments,getcurrapts
+currapts,setcurrapointments,getcurrapts,
+
+//issues 
+allissues,setallissues,getallqueries
     }
 
 
@@ -158,6 +177,7 @@ currapts,setcurrapointments,getcurrapts
         isadminAuth()
         fetchAppointments()
         fetchpatients()
+        getallqueries()
        
     },[])
 

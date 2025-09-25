@@ -20,8 +20,12 @@ const Sidebar = () => {
             <img src={assets.add_icon} alt="" />
             <p>Add Doctor</p>
         </div>}
-        <div className="side1" onClick={()=>navigator('/list')}>
+        {admindata.type==="admin" &&<div className="side1" onClick={()=>navigator('/query')}>
             <img src={assets.people_icon} alt="" />
+            <p>Support Center</p>
+        </div>}
+        <div className="side1" onClick={()=>navigator('/list')}>
+            <img src={assets.doctor_icon} alt="" />
             <p>List Doctor</p>
         </div>
         {admindata.type==="doctor" && <div className="side1" onClick={()=>navigator('/appointments')}>

@@ -1,0 +1,125 @@
+.querys{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+}
+
+.inside{
+    width: 60%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid black;
+    gap: 20px;
+}
+
+.indi-issue{
+     width: 70%;
+     height: auto;
+     border: 1px solid black;
+     display: flex;
+     
+     flex-direction: column;
+     align-items: flex-start;
+     justify-content: center;
+     padding: 10px;
+     border-radius: 10px;
+     box-shadow: 5px 5px 5px grey;
+     position: relative;
+}
+.closu{
+    position: absolute;
+    top: 2px;
+    right: 7px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.indi-issue:hover{
+    transform: translate(0px,-2px);
+}
+.indi-issue p{
+    font-size: 16px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.titl{
+    font-size: 25px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.5;
+    padding-right: 10px;
+}
+
+.btnn{
+    width: 90px;
+    height: 30px;
+    background-color: green;
+    color: aliceblue;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.replypopup {
+    position: fixed;
+    top: 0;  
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999; 
+}
+
+.replypopup form {
+    width: 300px;
+    min-height: 200px; 
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1000; 
+}
+
+.replypopup .clos {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1000;
+}
+.replypopup form input{
+    width: 100%;
+    height: 30px;
+}
+.replypopup form button{
+    width: 100px;
+    height: 30px;
+    background-color: green;
+    color: aliceblue;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}

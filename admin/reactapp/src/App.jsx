@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify'
 import { useState } from 'react'
 import Login from './pages/Login/Login'
 import Dashboard from './pages/Dashboard/Dashboard'
+import Query from './pages/Query/Query'
 const App = () => {
   const[showLoginPage,setshowLoginPage]=useState(false)
   return (
@@ -32,6 +33,7 @@ const App = () => {
         <Route path='/list' element={<List />} />
         <Route path='/appointments' element={<Appointment />} />
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/query' element={<Query/>}/>
       </Routes>
     </div>
   </div>
